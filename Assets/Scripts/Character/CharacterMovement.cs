@@ -12,6 +12,12 @@ public class CharacterMovement : MonoBehaviour
     private GameInputs.MovementActions _movementActions;
     private float _currentMovementCooldown = 0f;
     private DieState _dieState;
+    private EffectStateManager _effectStateManager;
+
+    void Awake()
+    {
+        _effectStateManager = FindObjectOfType<EffectStateManager>();
+    }
 
     void Start()
     {
@@ -93,6 +99,6 @@ public class CharacterMovement : MonoBehaviour
     private void ChangeDieState(MoveDirection moveDirection)
     {
         _dieState.ChangeState(moveDirection);
-        Debug.Log(_dieState.FaceCentral);
+        _effectStateManager.ChangeEffect(_dieState.FaceCentral);
     }
 }
