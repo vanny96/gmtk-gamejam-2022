@@ -8,15 +8,18 @@ public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private DieConfiguration dieConfiguration;
     [SerializeField] private float movementCooldown;
+    
+    private EffectStateManager _effectStateManager;
+    private ClockManager _clockManager;
 
     private GameInputs.MovementActions _movementActions;
     private float _currentMovementCooldown = 0f;
     private DieState _dieState;
-    private EffectStateManager _effectStateManager;
 
     void Awake()
     {
         _effectStateManager = FindObjectOfType<EffectStateManager>();
+        _clockManager = FindObjectOfType<ClockManager>();
     }
 
     void Start()
@@ -73,6 +76,7 @@ public class CharacterMovement : MonoBehaviour
 
             ChangeDieState(moveDirection);
             StartCoroutine(ColldownMovement());
+            _clockManager.Tick();
         }
     }
 

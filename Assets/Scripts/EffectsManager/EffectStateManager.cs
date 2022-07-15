@@ -22,6 +22,7 @@ public class EffectStateManager : MonoBehaviour
         _currentEffect.OnDeactivate();
         
         _currentEffect = CreateDieEffectBehaviour(dieEffect);
+        Debug.Log(dieEffect);
         
         AlertEffectActivation(_currentEffect.GetDieEffect());
         _currentEffect.OnActivate();
@@ -34,7 +35,7 @@ public class EffectStateManager : MonoBehaviour
             case DieEffect.None:
                 return new NoneDieEffect();
             case DieEffect.Electricity:
-                throw new NotImplementedException();
+                return new ElectricityDieEffect();
             case DieEffect.Ice:
                 return new IceDieEffect();
             case DieEffect.Fire:
