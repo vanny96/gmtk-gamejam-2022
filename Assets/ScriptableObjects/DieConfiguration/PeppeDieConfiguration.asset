@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PeppeDieConfiguration
   m_EditorClassIdentifier: 
   FaceCentral: 0
-  FaceUp: 0
+  FaceUp: 3
   FaceLeft: 0
   FaceRight: 0
-  FaceDown: 0
+  FaceDown: 1
   FaceDoubleDown: 0
