@@ -22,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         _dieState = new DieState(dieConfiguration);
+        ChangeDieState(MoveDirection.None);
         
         _movementActions = new GameInputs().Movement;
         _movementActions.Enable();
@@ -36,54 +37,63 @@ public class CharacterMovement : MonoBehaviour
     private MoveDirection GetDirection()
     {
         Vector2 movement = _movementActions.Movement.ReadValue<Vector2>();
-        if (movement.x == 1)
-        {
+        int horizontal = (int) movement.x;
+        int vertical = (int) movement.y;
+        
+        if (horizontal == 1)
             return MoveDirection.Right;
-        }
 
-        if (movement.x == -1)
-        {
+        if (horizontal == -1)
             return MoveDirection.Left;
-        }
 
-        if (movement.y == 1)
-        {
+        if (vertical == 1)
             return MoveDirection.Up;
-        }
 
-        if (movement.y == -1)
-        {
+        if (vertical == -1)
             return MoveDirection.Down;
-        }
 
         return MoveDirection.None;
     }
     
     private void MoveDie(MoveDirection moveDirection)
     {
-        if (_currentMovementCooldown > 0f) return;
-        switch (moveDirection)
+        if (_currentMovementCooldown > 0f || moveDirection == MoveDirection.None) return;
+        Vector2 movement = moveDirection switch
         {
-            case MoveDirection.Left:
-                transform.Translate(Vector2.left);
-                break;
-            case MoveDirection.Up:
-                transform.Translate(Vector2.up);
-                break;
-            case MoveDirection.Right:
-                transform.Translate(Vector2.right);
-                break;
-            case MoveDirection.Down:
-                transform.Translate(Vector2.down);
-                break;
-            case MoveDirection.None:
-                return;
+            MoveDirection.Left => Vector2.left,
+            MoveDirection.Up => Vector2.up,
+            MoveDirection.Right => Vector2.right,
+            MoveDirection.Down => Vector2.down,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
+        if (ValidMovement(movement))
+        {
+            transform.Translate(movement);
+
+            ChangeDieState(moveDirection);
+            StartCoroutine(ColldownMovement());
         }
-        
-        ChangeDieState(moveDirection);
-        StartCoroutine(ColldownMovement());
     }
 
+    private bool ValidMovement(Vector2 movement)
+    {
+        RaycastHit2D hitcheck = Physics2D.Raycast(transform.position, movement, movement.magnitude);
+        if (hitcheck.collider != null)
+        {
+            if (hitcheck.collider.tag == "Wall")
+                return false;
+        }
+
+        return true;
+    }
+
+    private void ChangeDieState(MoveDirection moveDirection)
+    {
+        _dieState.ChangeState(moveDirection);
+        _effectStateManager.ChangeEffect(_dieState.FaceCentral);
+    }
+    
     IEnumerator ColldownMovement()
     {
         _currentMovementCooldown = movementCooldown;
@@ -94,11 +104,5 @@ public class CharacterMovement : MonoBehaviour
         }
 
         _currentMovementCooldown = 0f;
-    }
-    
-    private void ChangeDieState(MoveDirection moveDirection)
-    {
-        _dieState.ChangeState(moveDirection);
-        _effectStateManager.ChangeEffect(_dieState.FaceCentral);
     }
 }
