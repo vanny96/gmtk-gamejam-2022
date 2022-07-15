@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22624f20eb5a048d5bbf43d288e7b4fb, type: 3}
   m_Name: Playground
   m_EditorClassIdentifier: 
-  FaceCentral: 1
-  FaceUp: 0
+  FaceCentral: 0
+  FaceUp: 2
   FaceLeft: 0
-  FaceRight: 1
+  FaceRight: 0
   FaceDown: 0
   FaceDoubleDown: 0

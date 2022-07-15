@@ -22,13 +22,11 @@ namespace Obstacles
         private void OpenDoor()
         {
             //cambia sprite
-            Debug.Log("Door is open");
             doorCollider.enabled = false;
         }
         
         private void CloseDoor()
         {
-            Debug.Log("Door is closed");
             doorCollider.enabled = true;
         }
         
