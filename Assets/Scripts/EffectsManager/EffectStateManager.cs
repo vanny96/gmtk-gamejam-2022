@@ -8,7 +8,7 @@ using Util.Effects.Impl;
 
 public class EffectStateManager : MonoBehaviour
 {
-    private IDieEffectBehaviour _currentEffect;
+    private IDieEffectBehaviour _currentEffect = new NoneDieEffect();
     private readonly HashSet<IDieEffectObserver> _observers = new HashSet<IDieEffectObserver>();
 
     public void RegisterObserver(IDieEffectObserver observer)
