@@ -38,7 +38,7 @@ public class EffectStateManager : MonoBehaviour
             case DieEffect.Ice:
                 return new IceDieEffect();
             case DieEffect.Fire:
-                throw new NotImplementedException();
+                return new FireDieEffect();
             case DieEffect.Wind:
                 throw new NotImplementedException();
             case DieEffect.Earth:

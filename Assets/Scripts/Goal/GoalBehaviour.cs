@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GoalBehavior : MonoBehaviour
+public class GoalBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,8 @@ public class GoalBehavior : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collider collider)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collider.tag == "Player")
-        {
-            Debug.Log("Game Over!");
-        }
+        Debug.Log("Game Over!");
     }
 }
