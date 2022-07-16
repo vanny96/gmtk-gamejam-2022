@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Util.Clock;
+using Util.ExtensionMethods;
 
 public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
 {
-    [SerializeField] private List<Vector2> positions;
+    [SerializeField] private List<MoveDirection> movements;
     [SerializeField] private bool reverses;
     [HideInInspector] public bool active;
     
-    private int _currPosition = 0;
+    private int _currMovement = 0;
     private bool _forward = true;
 
     void Awake()
@@ -26,9 +28,13 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
     {
         if(!active) return;
         
-        _currPosition += _forward ? 1 : -1;
-        transform.position = positions[_currPosition];
-        if (_currPosition == positions.Count - 1 || _currPosition == 0)
+        _currMovement += _forward ? 1 : -1;
+
+        Vector2 movement = movements[_currMovement].GetVector();
+        if(ValidMovement(movement))
+            transform.position += (Vector3) movement;
+        
+        if (_currMovement == movements.Count - 1 || _currMovement == 0)
         {
             if (reverses)
             {
@@ -36,8 +42,20 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
             }
             else
             {
-                _currPosition = 0;
+                _currMovement = 0;
             }
         }
+    }
+    
+    private bool ValidMovement(Vector2 movement)
+    {
+        RaycastHit2D hitcheck = Physics2D.Raycast(transform.position, movement, movement.magnitude);
+        if (hitcheck.collider != null)
+        {
+            if (hitcheck.collider.tag == "Wall")
+                return false;
+        }
+
+        return true;
     }
 }

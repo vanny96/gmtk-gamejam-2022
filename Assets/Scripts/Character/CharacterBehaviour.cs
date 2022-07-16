@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Util;
+using Util.ExtensionMethods;
 
 namespace Character
 {
@@ -66,14 +67,7 @@ namespace Character
         private void MoveDie(MoveDirection moveDirection)
         {
             if (_currentMovementCooldown > 0f || moveDirection == MoveDirection.None) return;
-            Vector2 movement = moveDirection switch
-            {
-                MoveDirection.Left => Vector2.left,
-                MoveDirection.Up => Vector2.up,
-                MoveDirection.Right => Vector2.right,
-                MoveDirection.Down => Vector2.down,
-                _ => throw new ArgumentOutOfRangeException()
-            };
+            Vector2 movement = moveDirection.GetVector();
 
             if (ValidMovement(movement))
             {
