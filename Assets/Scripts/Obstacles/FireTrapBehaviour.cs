@@ -6,7 +6,7 @@ using Util.Effects;
 public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
 {
     private IKillable target;
-    private bool trapOn;
+    private bool isActive;
 
     void Start()
     {
@@ -15,14 +15,13 @@ public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
 
     private void TrapOn()
     {
-        trapOn = true;
+        isActive = true;
         StartCoroutine(KillTarget());
     }
 
     private void TrapOff()
     {
-        trapOn = false;
-        Debug.Log("Trap Off!");
+        isActive = false;
     }
 
     public void OnDieEffectActivation(DieEffect dieEffect)
@@ -53,7 +52,7 @@ public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
     private void OnTriggerEnter2D(Collider2D col)
     {
         target = col.gameObject.GetComponent<IKillable>();
-        if(trapOn)
+        if(isActive)
             StartCoroutine(KillTarget());
     }
     

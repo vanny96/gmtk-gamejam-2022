@@ -19,4 +19,9 @@ public class ClockManager : MonoBehaviour
     {
         _observers.Add(observer);
     }
+
+    public void UnRegisterObserver(IClockBehaviour observer)
+    {
+        _observers.Remove(observer);
+    }
 }

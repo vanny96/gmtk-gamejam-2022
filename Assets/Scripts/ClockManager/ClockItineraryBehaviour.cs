@@ -24,6 +24,11 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
     {
         FindObjectOfType<ClockManager>().RegisterObserver(this);
     }
+    
+    private void OnDestroy()
+    {
+        FindObjectOfType<ClockManager>().UnRegisterObserver(this);
+    }
 
     public void OnClockTick()
     {

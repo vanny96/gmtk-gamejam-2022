@@ -15,6 +15,11 @@ public class EffectStateManager : MonoBehaviour
     {
         _observers.Add(observer);
     }
+    
+    public void UnRegisterObserver(IDieEffectObserver observer)
+    {
+        _observers.Remove(observer);
+    }
 
     public void ChangeEffect(DieEffect dieEffect)
     {
