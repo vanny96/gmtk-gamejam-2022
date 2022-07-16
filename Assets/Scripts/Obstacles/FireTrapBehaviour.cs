@@ -1,10 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Util;
 using Util.Effects;
 
 public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private List<Sprite> sprites;
+
     private IKillable target;
     private bool isActive;
 
@@ -16,12 +20,14 @@ public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
     private void TrapOn()
     {
         isActive = true;
+        spriteRenderer.sprite = sprites[1];
         StartCoroutine(KillTarget());
     }
 
     private void TrapOff()
     {
         isActive = false;
+        spriteRenderer.sprite = sprites[0];
     }
 
     public void OnDieEffectActivation(DieEffect dieEffect)
@@ -42,24 +48,24 @@ public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
 
     private IEnumerator KillTarget()
     {
-        if (target == null) 
-            yield break;
         for (int i = 0; i < 10; i++)
         {
             yield return null;
         }
+
         target?.Kill();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         target = col.gameObject.GetComponent<IKillable>();
-        if(isActive)
+        if (isActive)
             StartCoroutine(KillTarget());
     }
-    
+
     private void OnTriggerExit2D(Collider2D col)
     {
-        target = null;
+        if (col.gameObject.GetComponent<IKillable>() == target)
+            target = null;
     }
 }

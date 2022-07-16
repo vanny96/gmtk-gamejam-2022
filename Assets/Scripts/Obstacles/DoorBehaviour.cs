@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Util;
 using Util.Clock;
@@ -10,6 +11,8 @@ namespace Obstacles
     {
         [SerializeField] private Collider2D doorCollider;
         [SerializeField] private int ticksToCloseDoor;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private List<Sprite> sprites;
 
         private int _remainingTicksToClose = 0;
 
@@ -21,12 +24,13 @@ namespace Obstacles
 
         private void OpenDoor()
         {
-            //cambia sprite
+            spriteRenderer.sprite = sprites[1];
             doorCollider.enabled = false;
         }
         
         private void CloseDoor()
         {
+            spriteRenderer.sprite = sprites[0];
             doorCollider.enabled = true;
         }
         
