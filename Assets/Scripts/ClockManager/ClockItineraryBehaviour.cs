@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Util.Clock;
@@ -51,13 +52,9 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
     
     private bool ValidMovement(Vector2 movement)
     {
-        RaycastHit2D hitcheck = Physics2D.Raycast(transform.position, movement, movement.magnitude);
-        if (hitcheck.collider != null)
-        {
-            if (hitcheck.collider.tag == "Wall")
-                return false;
-        }
+        RaycastHit2D[] hitchecks = Physics2D.RaycastAll(transform.position, movement, movement.magnitude);
+        bool hitsWall = hitchecks.Any(hitcheck => hitcheck.collider.CompareTag("Wall"));
 
-        return true;
+        return !hitsWall;
     }
 }
