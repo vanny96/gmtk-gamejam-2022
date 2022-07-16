@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.37457424, g: 0.7830189, b: 0.1071111, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 94ee2d89b0bb4c543a2b0efdc843a890, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -117,6 +117,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clockItineraryBehaviour: {fileID: 8914871573912680126}
   ticksToUnfreeze: 2
+  spriteRenderer: {fileID: 8914871573912680124}
+  sprites:
+  - {fileID: 21300000, guid: 94ee2d89b0bb4c543a2b0efdc843a890, type: 3}
+  - {fileID: 21300000, guid: 577f04bfcd9f020499b59831045fc309, type: 3}
+  - {fileID: 21300000, guid: acb4bc2d92d9b6944a1ee8f6309a00c2, type: 3}
 --- !u!61 &1156984544301508609
 BoxCollider2D:
   m_ObjectHideFlags: 0

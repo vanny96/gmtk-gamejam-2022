@@ -11,9 +11,12 @@ namespace Enemies
     {
         [SerializeField] private ClockItineraryBehaviour clockItineraryBehaviour;
         [SerializeField] private int ticksToUnfreeze;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private List<Sprite> sprites;
 
         private bool melting;
-        private int _ticksRemainingToUnfreeze = 0;
+        private int _ticksRemainingToUnfreeze = 0; 
+        private bool _destroyOnNextTick;
 
         void Awake()
         {
@@ -46,12 +49,14 @@ namespace Enemies
         private void Freeze()
         {
             clockItineraryBehaviour.active = false;
+            spriteRenderer.sprite = sprites[1];
             melting = false;
         }
         
         private void Unfreeze()
         {
             clockItineraryBehaviour.active = true;
+            spriteRenderer.sprite = sprites[0];
         }
 
         public void OnClockTick()
@@ -61,6 +66,11 @@ namespace Enemies
                 _ticksRemainingToUnfreeze--;
                 if(_ticksRemainingToUnfreeze == 0)
                     Unfreeze();
+            }
+
+            if (_destroyOnNextTick)
+            {
+                Destroy(gameObject);
             }
         }
 
@@ -75,8 +85,8 @@ namespace Enemies
         {
             Destroy(clockItineraryBehaviour);
             Destroy(gameObject.GetComponent<Collider2D>());
-            //Change sprite
-            Destroy(this);
+            spriteRenderer.sprite = sprites[2];
+            _destroyOnNextTick = true;
         }
     }
 }
