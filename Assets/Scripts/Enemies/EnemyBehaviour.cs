@@ -54,5 +54,12 @@ namespace Enemies
                     Unfreeze();
             }
         }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            IKillable killable = col.gameObject.GetComponent<IKillable>();
+            if(killable != null)
+                killable.Kill();
+        }
     }
 }
