@@ -65,6 +65,8 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
 
     private bool ValidMovement(Vector2 movement)
     {
+        if (!active) return false;
+        
         RaycastHit2D[] hitchecks = Physics2D.RaycastAll(transform.position, movement, movement.magnitude);
         Func<RaycastHit2D, bool> enemyHitChek = hitcheck =>
         {
