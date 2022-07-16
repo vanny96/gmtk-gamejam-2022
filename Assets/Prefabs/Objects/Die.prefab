@@ -102,6 +102,16 @@ MonoBehaviour:
   dieConfiguration: {fileID: 11400000, guid: 80c12830b259b4ea991a5256682c8cd2, type: 2}
   movementCooldown: 0.6
   gameoverPanel: {fileID: 0}
+  spriteRenderer: {fileID: 788795475652161849}
+  sprites:
+  - {fileID: 21300000, guid: c8fcb3c71f2740343827539a712311f1, type: 3}
+  - {fileID: 21300000, guid: c4e4d67c6bb6e9f4f9018e285d83a000, type: 3}
+  - {fileID: 21300000, guid: 2d5a1057fd0f4c2448c1edbcd00bcfc6, type: 3}
+  - {fileID: 21300000, guid: 4807ca67999009440b11d0393e056cd0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 29cd6fc51cf2ad344aa5bbc22c31c3ad, type: 3}
+  - {fileID: 21300000, guid: 27506bb8dd1095943b385abee837f5e2, type: 3}
 --- !u!50 &33385773
 Rigidbody2D:
   serializedVersion: 4

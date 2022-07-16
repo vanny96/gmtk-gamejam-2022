@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Util;
 using Util.ExtensionMethods;
+using static Util.DieEffect;
 
 namespace Character
 {
@@ -12,6 +14,8 @@ namespace Character
         [SerializeField] private DieConfiguration dieConfiguration;
         [SerializeField] private float movementCooldown;
         [SerializeField] private RectTransform gameoverPanel;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private List<Sprite> sprites;
     
         private EffectStateManager _effectStateManager;
         private ClockManager _clockManager;
@@ -101,6 +105,37 @@ namespace Character
         {
             _dieState.ChangeState(moveDirection);
             _effectStateManager.ChangeEffect(_dieState.FaceCentral);
+            ChangeRender();
+        }
+
+        private void ChangeRender()
+        {
+            switch (_dieState.FaceCentral)
+            {
+                case None:
+                    spriteRenderer.sprite = sprites[0];
+                    break;
+                case Electricity:
+                    spriteRenderer.sprite = sprites[3];
+                    break;
+                case Ice:
+                    spriteRenderer.sprite = sprites[1];
+                    break;
+                case Fire:
+                    spriteRenderer.sprite = sprites[2];
+                    break;
+                case Wind:
+                    break;
+                case Earth:
+                    break;
+                case DieEffect.Light:
+                    spriteRenderer.sprite = sprites[6];
+                    break;
+                case Darkness:
+                    spriteRenderer.sprite = sprites[7];
+                    break;
+            }
+            
         }
     
         IEnumerator ColldownMovement()
