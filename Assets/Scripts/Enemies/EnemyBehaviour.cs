@@ -27,6 +27,7 @@ namespace Enemies
         private void OnDestroy()
         {
             FindObjectOfType<ClockManager>()?.UnRegisterObserver(this);
+            FindObjectOfType<EffectStateManager>()?.UnRegisterObserver(this);
         }
 
         public void OnDieEffectActivation(DieEffect dieEffect)
