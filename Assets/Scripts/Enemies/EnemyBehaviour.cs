@@ -23,7 +23,7 @@ namespace Enemies
         
         private void OnDestroy()
         {
-            FindObjectOfType<ClockManager>().UnRegisterObserver(this);
+            FindObjectOfType<ClockManager>()?.UnRegisterObserver(this);
         }
 
         public void OnDieEffectActivation(DieEffect dieEffect)
@@ -45,7 +45,6 @@ namespace Enemies
 
         private void Freeze()
         {
-            Debug.Log("Frozen");
             clockItineraryBehaviour.active = false;
             melting = false;
         }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Util;
 using Util.ExtensionMethods;
 using static Util.DieEffect;
@@ -20,15 +21,17 @@ namespace Character
         private EffectStateManager _effectStateManager;
         private ClockManager _clockManager;
 
+        private RectTransform _dieFullViewPanel;
         private GameInputs.MovementActions _movementActions;
         private float _currentMovementCooldown = 0f;
         private DieState _dieState;
-        private bool alive = true;
+        private bool _alive = true;
 
         void Awake()
         {
             _effectStateManager = FindObjectOfType<EffectStateManager>();
             _clockManager = FindObjectOfType<ClockManager>();
+            _dieFullViewPanel = GameObject.Find("DieFullView").GetComponent<RectTransform>();
         }
 
         void Start()
@@ -42,11 +45,17 @@ namespace Character
 
         void Update()
         {
-            if(!alive) return;
+            if(!_alive) return;
             MoveDirection moveDirection = GetDirection();
             MoveDie(moveDirection);
         }
-    
+        
+        public void Kill()
+        {
+            _alive = false;
+            gameoverPanel.gameObject.SetActive(true);
+        }
+
         private MoveDirection GetDirection()
         {
             Vector2 movement = _movementActions.Movement.ReadValue<Vector2>();
@@ -105,39 +114,41 @@ namespace Character
         {
             _dieState.ChangeState(moveDirection);
             _effectStateManager.ChangeEffect(_dieState.FaceCentral);
-            ChangeRender();
+            UpdateSprite();
+            UpdateUI();
         }
 
-        private void ChangeRender()
+        private void UpdateSprite()
         {
-            switch (_dieState.FaceCentral)
-            {
-                case None:
-                    spriteRenderer.sprite = sprites[0];
-                    break;
-                case Electricity:
-                    spriteRenderer.sprite = sprites[3];
-                    break;
-                case Ice:
-                    spriteRenderer.sprite = sprites[1];
-                    break;
-                case Fire:
-                    spriteRenderer.sprite = sprites[2];
-                    break;
-                case Wind:
-                    break;
-                case Earth:
-                    break;
-                case DieEffect.Light:
-                    spriteRenderer.sprite = sprites[6];
-                    break;
-                case Darkness:
-                    spriteRenderer.sprite = sprites[7];
-                    break;
-            }
-            
+            spriteRenderer.sprite = ParseSprite(_dieState.FaceCentral);
         }
-    
+        
+        private void UpdateUI()
+        {
+            _dieFullViewPanel.Find("Up").GetComponent<Image>().sprite = ParseSprite(_dieState.FaceUp);
+            _dieFullViewPanel.Find("Center").GetComponent<Image>().sprite = ParseSprite(_dieState.FaceCentral);
+            _dieFullViewPanel.Find("Down").GetComponent<Image>().sprite = ParseSprite(_dieState.FaceDown);
+            _dieFullViewPanel.Find("DoubleDown").GetComponent<Image>().sprite = ParseSprite(_dieState.FaceDoubleDown);
+            _dieFullViewPanel.Find("Left").GetComponent<Image>().sprite = ParseSprite(_dieState.FaceLeft);
+            _dieFullViewPanel.Find("Right").GetComponent<Image>().sprite = ParseSprite(_dieState.FaceRight);
+        }
+
+        private Sprite ParseSprite(DieEffect dieEffect)
+        {
+            return dieEffect switch
+            {
+                None => sprites[0],
+                Electricity => sprites[3],
+                Ice => sprites[1],
+                Fire => sprites[2],
+                Wind => sprites[0],
+                Earth => sprites[0],
+                DieEffect.Light => sprites[6],
+                Darkness => sprites[7],
+                _ => throw new ArgumentOutOfRangeException(nameof(dieEffect), dieEffect, null)
+            };
+        }
+
         IEnumerator ColldownMovement()
         {
             _currentMovementCooldown = movementCooldown;
@@ -148,12 +159,6 @@ namespace Character
             }
 
             _currentMovementCooldown = 0f;
-        }
-
-        public void Kill()
-        {
-            alive = false;
-            gameoverPanel.gameObject.SetActive(true);
         }
     }
 }
