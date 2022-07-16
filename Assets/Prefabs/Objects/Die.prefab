@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dieConfiguration: {fileID: 11400000, guid: 80c12830b259b4ea991a5256682c8cd2, type: 2}
-  movementCooldown: 0.6
+  movementCooldown: 0
   gameoverPanel: {fileID: 0}
   spriteRenderer: {fileID: 788795475652161849}
   sprites:

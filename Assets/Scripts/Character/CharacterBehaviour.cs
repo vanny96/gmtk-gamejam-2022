@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Util;
 using Util.ExtensionMethods;
@@ -26,8 +27,9 @@ namespace Character
         private GameInputs.MovementActions _movementActions;
         private float _currentMovementCooldown = 0f;
         private DieState _dieState;
-        private bool _alive = true;
+        private bool _canMove = false;
 
+        #region Starting
         void Awake()
         {
             _effectStateManager = FindObjectOfType<EffectStateManager>();
@@ -39,23 +41,45 @@ namespace Character
         void Start()
         {
             _dieState = new DieState(dieConfiguration);
-            ChangeDieState(MoveDirection.None);
-        
-            _movementActions = new GameInputs().Movement;
-            _movementActions.Enable();
+            ChangeDieState(MoveDirection.None); 
+            RegisterMovement();
         }
 
-        void Update()
+        private void RegisterMovement()
         {
-            if(!_alive) return;
-            MoveDirection moveDirection = GetDirection();
-            MoveDie(moveDirection);
+            _movementActions = new GameInputs().Movement;
+            _movementActions.Movement.Enable();
+            _movementActions.Movement.started += OnMovementInput;
+            StartCoroutine(StartMoving());
+        }
+
+        private IEnumerator StartMoving()
+        {
+            yield return null;
+            _canMove = true;
+        }
+
+        #endregion
+        #region Listeners
+        void OnDestroy()
+        {
+            _movementActions.Disable();
         }
         
         public void Kill()
         {
-            _alive = false;
+            _canMove = false;
             gameoverPanel.gameObject.SetActive(true);
+        }
+        
+        
+        #endregion
+        #region Movement
+        private void OnMovementInput(InputAction.CallbackContext context)
+        {
+            if(!_canMove || Time.frameCount == 1) return;
+            MoveDirection moveDirection = GetDirection();
+            MoveDie(moveDirection);
         }
 
         private MoveDirection GetDirection()
@@ -112,7 +136,19 @@ namespace Character
 
             return true;
         }
+        IEnumerator ColldownMovement()
+        {
+            _currentMovementCooldown = movementCooldown;
+            while (_currentMovementCooldown > 0f)
+            {
+                _currentMovementCooldown -= Time.deltaTime;
+                yield return null;
+            }
 
+            _currentMovementCooldown = 0f;
+        }
+        #endregion
+        #region Die state
         private void ChangeDieState(MoveDirection moveDirection)
         {
             _dieState.ChangeState(moveDirection);
@@ -151,17 +187,6 @@ namespace Character
                 _ => throw new ArgumentOutOfRangeException(nameof(dieEffect), dieEffect, null)
             };
         }
-
-        IEnumerator ColldownMovement()
-        {
-            _currentMovementCooldown = movementCooldown;
-            while (_currentMovementCooldown > 0f)
-            {
-                _currentMovementCooldown -= Time.deltaTime;
-                yield return null;
-            }
-
-            _currentMovementCooldown = 0f;
-        }
+        #endregion
     }
 }
