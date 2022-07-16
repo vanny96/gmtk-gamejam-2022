@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.13803846, g: 0.8867924, b: 0.77566713, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0f6b67ef51bac49089b646548944a2ef, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,3 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorCollider: {fileID: 6419344863462367944}
   ticksToCloseDoor: 2
+  spriteRenderer: {fileID: 2095543489618753506}
+  sprites:
+  - {fileID: 21300000, guid: 0f6b67ef51bac49089b646548944a2ef, type: 3}
+  - {fileID: 21300000, guid: bcd76d4c06c604b98a51d89d3b99d84e, type: 3}
