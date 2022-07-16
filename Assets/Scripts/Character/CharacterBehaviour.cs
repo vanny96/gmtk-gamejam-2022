@@ -84,8 +84,14 @@ namespace Character
             RaycastHit2D hitcheck = Physics2D.Raycast(transform.position, movement, movement.magnitude);
             if (hitcheck.collider != null)
             {
-                if (hitcheck.collider.tag == "Wall")
+                if (hitcheck.collider.CompareTag("Wall"))
                     return false;
+
+                if (hitcheck.collider.CompareTag("Enemy"))
+                {
+                    Kill();
+                    return false;
+                }
             }
 
             return true;

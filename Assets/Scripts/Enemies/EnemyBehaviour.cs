@@ -14,7 +14,7 @@ namespace Enemies
         private bool melting;
         private int _ticksRemainingToUnfreeze = 0;
 
-        void Start()
+        void Awake()
         {
             FindObjectOfType<EffectStateManager>().RegisterObserver(this);
             FindObjectOfType<ClockManager>().RegisterObserver(this);
@@ -39,6 +39,7 @@ namespace Enemies
 
         private void Freeze()
         {
+            Debug.Log("Frozen");
             clockItineraryBehaviour.active = false;
             melting = false;
         }
