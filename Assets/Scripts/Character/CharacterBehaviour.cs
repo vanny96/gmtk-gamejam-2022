@@ -20,6 +20,7 @@ namespace Character
     
         private EffectStateManager _effectStateManager;
         private ClockManager _clockManager;
+        private AudioManager _audioManager;
 
         private RectTransform _dieFullViewPanel;
         private GameInputs.MovementActions _movementActions;
@@ -31,6 +32,7 @@ namespace Character
         {
             _effectStateManager = FindObjectOfType<EffectStateManager>();
             _clockManager = FindObjectOfType<ClockManager>();
+            _audioManager = FindObjectOfType<AudioManager>();
             _dieFullViewPanel = GameObject.Find("DieFullView").GetComponent<RectTransform>();
         }
 
@@ -85,7 +87,8 @@ namespace Character
             if (ValidMovement(movement))
             {
                 transform.Translate(movement);
-
+                _audioManager.Play(AudioManager.Audio.DieMovement);
+                
                 _clockManager.Tick();
                 ChangeDieState(moveDirection);
                 StartCoroutine(ColldownMovement());
