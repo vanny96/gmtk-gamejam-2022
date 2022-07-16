@@ -42,7 +42,9 @@ public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
 
     private IEnumerator KillTarget()
     {
-        for (int i = 0; i < 2; i++)
+        if (target == null) 
+            yield break;
+        for (int i = 0; i < 10; i++)
         {
             yield return null;
         }
