@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Playground
   m_EditorClassIdentifier: 
   FaceCentral: 0
-  FaceUp: 2
+  FaceUp: 0
   FaceLeft: 0
-  FaceRight: 0
+  FaceRight: 3
   FaceDown: 0
   FaceDoubleDown: 0

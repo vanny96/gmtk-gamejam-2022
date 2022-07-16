@@ -79,9 +79,9 @@ namespace Character
             {
                 transform.Translate(movement);
 
+                _clockManager.Tick();
                 ChangeDieState(moveDirection);
                 StartCoroutine(ColldownMovement());
-                _clockManager.Tick();
             }
         }
 

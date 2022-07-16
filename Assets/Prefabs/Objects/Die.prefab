@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dieConfiguration: {fileID: 11400000, guid: 80c12830b259b4ea991a5256682c8cd2, type: 2}
   movementCooldown: 0.6
+  gameoverPanel: {fileID: 0}
 --- !u!50 &33385773
 Rigidbody2D:
   serializedVersion: 4
@@ -146,5 +147,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0

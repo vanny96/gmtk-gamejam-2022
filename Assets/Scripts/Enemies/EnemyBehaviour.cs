@@ -6,7 +6,7 @@ using Util.Effects;
 
 namespace Enemies
 {
-    public class EnemyBehaviour: MonoBehaviour, IDieEffectObserver, IClockBehaviour
+    public class EnemyBehaviour: MonoBehaviour, IDieEffectObserver, IClockBehaviour, IKillable
     {
         [SerializeField] private ClockItineraryBehaviour clockItineraryBehaviour;
         [SerializeField] private int ticksToUnfreeze;
@@ -60,6 +60,11 @@ namespace Enemies
             IKillable killable = col.gameObject.GetComponent<IKillable>();
             if(killable != null)
                 killable.Kill();
+        }
+
+        public void Kill()
+        {
+            Debug.Log("Killed");
         }
     }
 }
