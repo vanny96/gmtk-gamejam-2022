@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Util;
 using Util.Clock;
@@ -18,6 +19,11 @@ namespace Enemies
         {
             FindObjectOfType<EffectStateManager>().RegisterObserver(this);
             FindObjectOfType<ClockManager>().RegisterObserver(this);
+        }
+        
+        private void OnDestroy()
+        {
+            FindObjectOfType<ClockManager>()?.UnRegisterObserver(this);
         }
 
         public void OnDieEffectActivation(DieEffect dieEffect)
@@ -39,7 +45,6 @@ namespace Enemies
 
         private void Freeze()
         {
-            Debug.Log("Frozen");
             clockItineraryBehaviour.active = false;
             melting = false;
         }
@@ -68,7 +73,10 @@ namespace Enemies
 
         public void Kill()
         {
-            Debug.Log("Killed");
+            Destroy(clockItineraryBehaviour);
+            Destroy(gameObject.GetComponent<Collider2D>());
+            //Change sprite
+            Destroy(this);
         }
     }
 }
