@@ -27,17 +27,19 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
     public void OnClockTick()
     {
         if(!active) return;
-        
-        _currMovement += _forward ? 1 : -1;
+        int forward = _forward ? 1 : -1;
+        _currMovement += forward;
 
-        Vector2 movement = movements[_currMovement].GetVector();
+        Vector2 movement = movements[_currMovement].GetVector() * forward;
         if(ValidMovement(movement))
             transform.position += (Vector3) movement;
-        
-        if (_currMovement == movements.Count - 1 || _currMovement == 0)
+
+        bool reachedEnd = _currMovement == movements.Count - 1 && _forward;
+        if (reachedEnd || _currMovement == 0)
         {
             if (reverses)
             {
+                _currMovement++;
                 _forward = !_forward;
             }
             else

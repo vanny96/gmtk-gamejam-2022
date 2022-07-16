@@ -22,7 +22,6 @@ public class EffectStateManager : MonoBehaviour
         _currentEffect.OnDeactivate();
         
         _currentEffect = CreateDieEffectBehaviour(dieEffect);
-        Debug.Log(dieEffect);
         
         AlertEffectActivation(_currentEffect.GetDieEffect());
         _currentEffect.OnActivate();

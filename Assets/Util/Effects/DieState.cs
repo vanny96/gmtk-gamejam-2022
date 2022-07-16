@@ -42,7 +42,8 @@ namespace Util
         }
         private void MoveLeft()
         {
-            var newRight = FaceLeft;
+            var newRight = FaceDoubleDown;
+            FaceDoubleDown = FaceLeft;
             FaceLeft = FaceCentral;
             FaceCentral = FaceRight;
             FaceRight = newRight;
@@ -57,7 +58,8 @@ namespace Util
         }
         private void MoveRight()
         {
-            var newLeft = FaceRight;
+            var newLeft = FaceDoubleDown;
+            FaceDoubleDown = FaceRight;
             FaceRight = FaceCentral;
             FaceCentral = FaceLeft;
             FaceLeft = newLeft;
