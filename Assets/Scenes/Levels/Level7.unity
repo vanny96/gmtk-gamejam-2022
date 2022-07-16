@@ -7505,7 +7505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048847385816931630, guid: f8bd113bf8c3c4270ad836dc47099955, type: 3}
       propertyPath: nextLevel
-      value: Game End
+      value: Level8
       objectReference: {fileID: 0}
     - target: {fileID: 2048847385816931631, guid: f8bd113bf8c3c4270ad836dc47099955, type: 3}
       propertyPath: m_RootOrder

@@ -5,13 +5,17 @@ using Util.Clock;
 
 public class ClockManager : MonoBehaviour
 {
-    private readonly HashSet<IClockBehaviour> _observers = new HashSet<IClockBehaviour>();
+    private readonly List<IClockBehaviour> _observers = new List<IClockBehaviour>();
 
     public void Tick()
     {
         foreach (var observer in _observers)
         {
             observer.OnClockTick();
+        }
+        foreach (var observer in _observers)
+        {
+            observer.OnLateClockTick();
         }
     }
 
