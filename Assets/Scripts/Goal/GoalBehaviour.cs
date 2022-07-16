@@ -1,24 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GoalBehaviour : MonoBehaviour
+namespace Goal
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GoalBehaviour : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private string nextLevel;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        Debug.Log("Game Over!");
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            SceneManager.LoadScene(nextLevel);
+        }
     }
 }
