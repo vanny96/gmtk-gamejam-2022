@@ -39,7 +39,11 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
         _currMovement += forward;
 
         nextMovement = movements[_currMovement].GetVector() * forward;
+        AdvanceCursor();
+    }
 
+    private void AdvanceCursor()
+    {
         bool reachedEnd = _currMovement == movements.Count - 1 && _forward;
         if (reachedEnd || _currMovement == 0)
         {
@@ -60,6 +64,7 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
         if (ValidMovement(nextMovement))
         {
             transform.position += (Vector3) nextMovement;
+            nextMovement = Vector2.zero;
         }
     }
 
