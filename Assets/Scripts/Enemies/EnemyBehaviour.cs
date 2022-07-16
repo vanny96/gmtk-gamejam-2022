@@ -14,7 +14,7 @@ namespace Enemies
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private List<Sprite> sprites;
 
-        private bool melting;
+        private bool _melting;
         private int _ticksRemainingToUnfreeze = 0; 
         private bool _destroyOnNextTick;
 
@@ -42,7 +42,7 @@ namespace Enemies
         {
             if (dieEffect == DieEffect.Ice)
             {
-                melting = true;
+                _melting = true;
                 _ticksRemainingToUnfreeze = ticksToUnfreeze;
             }
         }
@@ -51,7 +51,7 @@ namespace Enemies
         {
             clockItineraryBehaviour.active = false;
             spriteRenderer.sprite = sprites[1];
-            melting = false;
+            _melting = false;
         }
         
         private void Unfreeze()
@@ -62,7 +62,7 @@ namespace Enemies
 
         public void OnClockTick()
         {
-            if (melting && _ticksRemainingToUnfreeze > 0)
+            if (_melting && _ticksRemainingToUnfreeze > 0)
             {
                 _ticksRemainingToUnfreeze--;
                 if(_ticksRemainingToUnfreeze == 0)

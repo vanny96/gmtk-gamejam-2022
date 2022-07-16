@@ -7,7 +7,7 @@ using Util.Effects;
 
 namespace Obstacles
 {
-    public class DoorBehaviour : MonoBehaviour, IDieEffectObserver, IClockBehaviour
+    public class DoorBehaviour : KillerTrap, IDieEffectObserver, IClockBehaviour
     {
         [SerializeField] private Collider2D doorCollider;
         [SerializeField] private int ticksToCloseDoor;
@@ -15,6 +15,7 @@ namespace Obstacles
         [SerializeField] private List<Sprite> sprites;
 
         private int _remainingTicksToClose = 0;
+        private bool _closing;
 
         void Start()
         {
@@ -26,12 +27,14 @@ namespace Obstacles
         {
             spriteRenderer.sprite = sprites[1];
             doorCollider.enabled = false;
+            _closing = false;
         }
         
         private void CloseDoor()
         {
             spriteRenderer.sprite = sprites[0];
             doorCollider.enabled = true;
+            KillTarget();
         }
         
         public void OnDieEffectActivation(DieEffect dieEffect)
@@ -46,13 +49,14 @@ namespace Obstacles
         {
             if (dieEffect == DieEffect.Electricity)
             {
+                _closing = true;
                 _remainingTicksToClose = ticksToCloseDoor;
             }
         }
 
         public void OnClockTick()
         {
-            if (_remainingTicksToClose > 0)
+            if (_closing && _remainingTicksToClose > 0)
             {
                 _remainingTicksToClose--;
                 if (_remainingTicksToClose == 0)

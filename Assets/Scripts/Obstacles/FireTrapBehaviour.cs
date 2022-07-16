@@ -1,16 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
 using Util.Effects;
 
-public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
+public class FireTrapBehaviour : KillerTrap, IDieEffectObserver
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> sprites;
 
-    private IKillable target;
-    private bool isActive;
+    private bool _isActive;
 
     void Start()
     {
@@ -19,14 +17,14 @@ public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
 
     private void TrapOn()
     {
-        isActive = true;
+        _isActive = true;
         spriteRenderer.sprite = sprites[1];
-        StartCoroutine(KillTarget());
+        KillTarget();
     }
 
     private void TrapOff()
     {
-        isActive = false;
+        _isActive = false;
         spriteRenderer.sprite = sprites[0];
     }
 
@@ -46,26 +44,10 @@ public class FireTrapBehaviour : MonoBehaviour, IDieEffectObserver
         }
     }
 
-    private IEnumerator KillTarget()
+    protected override void OnTriggerEnter2D(Collider2D col)
     {
-        for (int i = 0; i < 10; i++)
-        {
-            yield return null;
-        }
-
-        target?.Kill();
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        target = col.gameObject.GetComponent<IKillable>();
-        if (isActive)
-            StartCoroutine(KillTarget());
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.gameObject.GetComponent<IKillable>() == target)
-            target = null;
+        base.OnTriggerEnter2D(col);
+        if(_isActive)
+            KillTarget();
     }
 }
