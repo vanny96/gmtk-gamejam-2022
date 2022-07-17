@@ -7093,10 +7093,6 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[371].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
-    - target: {fileID: 6551625352112996531, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 9042889028680578172, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7139,26 +7135,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9042889028680578172, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9047121184355187884, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
-      propertyPath: m_fontSize
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 9047121184355187884, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 9047121185505790296, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
-      propertyPath: m_fontSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 9047121185505790296, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 9047121185519607767, guid: 1b38a6023179a467caf456297c9c0594, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7406,6 +7382,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 196911864903667848, guid: f55ba10a368614573a86d17f9a499d87, type: 3}
+      propertyPath: m_text
+      value: 'YOUR LOVER DADA IS LOOKING FOR YOU
+
+        DON''T MAKE HER WAIT!'
+      objectReference: {fileID: 0}
     - target: {fileID: 196911864903667848, guid: f55ba10a368614573a86d17f9a499d87, type: 3}
       propertyPath: m_fontSize
       value: 40

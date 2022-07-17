@@ -14618,7 +14618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SOME EFFECTS DISSOLVE IMMIDEATLY
+  m_text: 'SOME EFFECTS DISSOLVE IMMEDIATELY
 
     SOME OTHERS TAKE A WHILE'
   m_isRightToLeft: 0

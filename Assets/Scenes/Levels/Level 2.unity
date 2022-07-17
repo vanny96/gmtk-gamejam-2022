@@ -13965,9 +13965,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 196911864903667848, guid: f55ba10a368614573a86d17f9a499d87, type: 3}
       propertyPath: m_text
-      value: 'AN EVIL 4-SIDED DIE IS STANDING IN YOUR WAY
+      value: 'AN EVIL 4-SIDED DIE IS STANDING IN YOUR WAY.
 
-        SEEMS TO MOVE
+        IT SEEMS TO MOVE
         AT YOUR RYTHM, BE CAREFUL'
       objectReference: {fileID: 0}
     - target: {fileID: 196911864903667851, guid: f55ba10a368614573a86d17f9a499d87, type: 3}
