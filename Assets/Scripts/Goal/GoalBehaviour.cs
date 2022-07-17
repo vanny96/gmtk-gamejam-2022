@@ -1,3 +1,4 @@
+using Score;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ namespace Goal
 
         private void OnTriggerEnter2D(Collider2D col)
         {
+            FindObjectOfType<ClockManager>().SaveScore();
             SceneManager.LoadScene(nextLevel);
         }
     }
