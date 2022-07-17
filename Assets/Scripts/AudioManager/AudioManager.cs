@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip dieMovement;
+    [SerializeField] private AudioClipData dieMovement;
 
     public void Play(Audio audio)
     {
-        AudioClip clipToPlay = FindClip(audio);
+        AudioClipData clipToPlay = FindClip(audio);
         StartCoroutine(PlayClip(clipToPlay));
     }
 
-    private IEnumerator PlayClip(AudioClip clip)
+    private IEnumerator PlayClip(AudioClipData clipData)
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = false;
-        audioSource.clip = clip;
+        audioSource.clip = clipData.audioClip;
+        audioSource.volume = clipData.volume;
         audioSource.Play();
 
         while (audioSource.isPlaying)
@@ -28,7 +29,7 @@ public class AudioManager : MonoBehaviour
         Destroy(audioSource);
     }
 
-    private AudioClip FindClip(Audio audio)
+    private AudioClipData FindClip(Audio audio)
     {
         return audio switch
         {
@@ -40,5 +41,13 @@ public class AudioManager : MonoBehaviour
     public enum Audio
     {
         DieMovement
+    }
+    
+    [Serializable]
+    public struct AudioClipData
+    {
+        public AudioClip audioClip;
+        [Range(0,1)]
+        public float volume;
     }
 }
