@@ -920,13 +920,15 @@ MonoBehaviour:
   - level: Level 7
     steps: 32
   - level: Level 8
-    steps: 18
+    steps: 16
   - level: Level 9
     steps: 24
   - level: Level 10
     steps: 24
   - level: Secret Level
     steps: 5
+  - level: Level 11
+    steps: 45
 --- !u!1 &569638677
 GameObject:
   m_ObjectHideFlags: 0
