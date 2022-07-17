@@ -12,7 +12,7 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
     [SerializeField] private bool reverses;
     [HideInInspector] public bool active;
 
-    public Vector2 nextMovement { get; private set; }
+    public Vector2 nextMovement { get; private set; } = Vector2.zero;
     
     private int _currMovement = 0;
     private bool _forward = true;
@@ -38,8 +38,11 @@ public class ClockItineraryBehaviour : MonoBehaviour, IClockBehaviour
         int forward = _forward ? 1 : -1;
         _currMovement += forward;
 
-        nextMovement = movements[_currMovement].GetVector() * forward;
-        AdvanceCursor();
+        if (movements.Count > 0)
+        {
+            nextMovement = movements[_currMovement].GetVector() * forward;
+            AdvanceCursor();
+        }
     }
 
     private void AdvanceCursor()

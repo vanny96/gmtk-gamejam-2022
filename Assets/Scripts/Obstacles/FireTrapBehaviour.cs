@@ -10,7 +10,7 @@ public class FireTrapBehaviour : KillerTrap, IDieEffectObserver
 
     private bool _isActive;
 
-    void Start()
+    void Awake()
     {
         FindObjectOfType<EffectStateManager>().RegisterObserver(this);
     }
