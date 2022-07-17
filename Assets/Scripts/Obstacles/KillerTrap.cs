@@ -7,7 +7,7 @@ namespace Util
     {
         protected IKillable Target;
 
-        protected virtual void KillTarget()
+        protected void KillTarget()
         {
             StartCoroutine(KillTargetCoroutine());
         }
@@ -25,7 +25,7 @@ namespace Util
 
         private IEnumerator KillTargetCoroutine()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 yield return null;
             }

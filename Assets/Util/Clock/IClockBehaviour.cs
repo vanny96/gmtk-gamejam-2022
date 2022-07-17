@@ -2,7 +2,10 @@ namespace Util.Clock
 {
     public interface IClockBehaviour
     {
-        void OnClockTick();
+        void OnClockTick()
+        {
+            
+        }
 
         void OnLateClockTick()
         {
