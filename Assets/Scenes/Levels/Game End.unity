@@ -904,7 +904,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textArea: {fileID: 540846059}
-  developerSteps: 0c0000000d0000000e00000009000000090000001400000056000000120000001a000000
+  developerSteps:
+  - level: Level 1
+    steps: 12
+  - level: Level 2
+    steps: 13
+  - level: Level 3
+    steps: 14
+  - level: Level 4
+    steps: 9
+  - level: Level 5
+    steps: 9
+  - level: Level 6
+    steps: 20
+  - level: Level 7
+    steps: 32
+  - level: Level 8
+    steps: 18
+  - level: Level 9
+    steps: 24
 --- !u!1 &569638677
 GameObject:
   m_ObjectHideFlags: 0
