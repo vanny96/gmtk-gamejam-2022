@@ -174,10 +174,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (13)
@@ -266,10 +262,6 @@ PrefabInstance:
     - target: {fileID: 2048847385816931627, guid: f8bd113bf8c3c4270ad836dc47099955, type: 3}
       propertyPath: m_Name
       value: Goal
-      objectReference: {fileID: 0}
-    - target: {fileID: 2048847385816931628, guid: f8bd113bf8c3c4270ad836dc47099955, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2048847385816931630, guid: f8bd113bf8c3c4270ad836dc47099955, type: 3}
       propertyPath: nextLevel
@@ -410,10 +402,6 @@ PrefabInstance:
     - target: {fileID: 4810019266721612854, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
@@ -595,10 +583,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (2)
@@ -666,10 +650,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (9)
@@ -727,10 +707,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (12)
@@ -755,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2095543489618753506, guid: acaccd49bee954b74a2ac9dd7c1a6f00, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8375131869476092962, guid: acaccd49bee954b74a2ac9dd7c1a6f00, type: 3}
       propertyPath: m_RootOrder
@@ -920,10 +896,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (7)
@@ -1015,10 +987,6 @@ PrefabInstance:
     - target: {fileID: 4810019266721612854, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
@@ -1121,7 +1089,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6293,10 +6261,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (3)
@@ -6441,7 +6405,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -7897,7 +7861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2095543489618753506, guid: acaccd49bee954b74a2ac9dd7c1a6f00, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8375131869476092962, guid: acaccd49bee954b74a2ac9dd7c1a6f00, type: 3}
       propertyPath: m_RootOrder
@@ -7996,10 +7960,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (5)
@@ -8062,10 +8022,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (10)
@@ -8082,10 +8038,6 @@ PrefabInstance:
     - target: {fileID: 1755212743721854310, guid: acaccd49bee954b74a2ac9dd7c1a6f00, type: 3}
       propertyPath: m_Name
       value: ElectricDoor (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095543489618753506, guid: acaccd49bee954b74a2ac9dd7c1a6f00, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8375131869476092962, guid: acaccd49bee954b74a2ac9dd7c1a6f00, type: 3}
       propertyPath: m_RootOrder
@@ -8429,10 +8381,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (11)
@@ -8597,10 +8545,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (6)
@@ -8713,10 +8657,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name
       value: FireTrap (4)
@@ -8773,10 +8713,6 @@ PrefabInstance:
     - target: {fileID: 4810019266721612854, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5804063392198528012, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7911925317175040050, guid: d8685dd862ba48645a1bd147762ad612, type: 3}
       propertyPath: m_Name

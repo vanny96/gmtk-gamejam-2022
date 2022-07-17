@@ -23,7 +23,6 @@ namespace Score
         void Start()
         {
             _scoreTracker = FindObjectOfType<ScoreTracker>();
-            Debug.Log(PrepareText());
             textArea.text = PrepareText();
         }
 
