@@ -30,22 +30,27 @@ namespace Score
         private string PrepareText()
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append($"{"Level",-10} {"Steps",-7} {"Developer Steps",-15}\n\n");
+            builder.Append($"{"Level",-15} {"Steps",-7} {"Developer Steps",-15}\n\n");
 
-            List<(string, int)> levelsSteps = _scoreTracker.GetLevelsSteps();
-            for (int i=0; i < levelsSteps.Count; i++)
+            Dictionary<string, int> playerLevelStaps = _scoreTracker.StepsPerLevel;
+            foreach (LevelSteps developerStep in developerSteps)
             {
-                string levelName = levelsSteps[i].Item1;
-                int playerSteps = levelsSteps[i].Item2;
-                int developersSteps = _developersStepsMap[levelName];
-                string formattedString = $"{levelName,-10} {playerSteps,-7} {developersSteps, -7}\n";
-                builder.Append(formattedString);
+                string levelName = developerStep.level;
+                if (playerLevelStaps.TryGetValue(levelName, out int playerSteps))
+                {
+                    int developersSteps = _developersStepsMap[levelName];
+                    string formattedString = $"{levelName,-15} {playerSteps,-7} {developersSteps, -7}\n";
+                    builder.Append(formattedString);
+                }
             }
 
-            int totalSteps = levelsSteps.Select(_ => _.Item2).Aggregate(0, (sum, value) => sum + value);
-            int developerTotal = developerSteps.Select(_ => _.steps).Aggregate(0, (sum, value) => sum + value);
-            builder.Append($"\n{"Total",-10} {totalSteps,-7} {developerTotal, -7}");
-
+            int totalSteps = playerLevelStaps.Select(_ => _.Value).Aggregate(0, (sum, value) => sum + value);
+            int developerTotal = developerSteps.Where(_ => playerLevelStaps.ContainsKey(_.level))
+                .Select(_ => _.steps)
+                .Aggregate(0, (sum, value) => sum + value);
+            
+            builder.Append($"\n{"Total",-15} {totalSteps,-7} {developerTotal, -7}");
+            
             return builder.ToString();
         }
         

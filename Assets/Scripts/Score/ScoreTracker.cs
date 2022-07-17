@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Score
@@ -8,7 +9,7 @@ namespace Score
     {
         private static ScoreTracker _instance;
 
-        private List<(string, int)> _stepsPerLevel = new();
+        public Dictionary<string, int> StepsPerLevel { get; }= new();
 
         void Awake()
         {
@@ -24,12 +25,7 @@ namespace Score
 
         public void SetLevelSteps(string level, int steps)
         {
-            _stepsPerLevel.Add((level,steps));
-        }
-
-        public List<(string, int)> GetLevelsSteps()
-        {
-            return _stepsPerLevel;
+            StepsPerLevel[level] = steps;
         }
     }
 }

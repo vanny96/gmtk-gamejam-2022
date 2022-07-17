@@ -791,8 +791,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 0}
-  m_SizeDelta: {x: 800, y: 600}
+  m_AnchoredPosition: {x: 100, y: 0}
+  m_SizeDelta: {x: 1000, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540846059
 MonoBehaviour:
@@ -923,6 +923,10 @@ MonoBehaviour:
     steps: 18
   - level: Level 9
     steps: 24
+  - level: Level 10
+    steps: 24
+  - level: Secret Level
+    steps: 5
 --- !u!1 &569638677
 GameObject:
   m_ObjectHideFlags: 0
