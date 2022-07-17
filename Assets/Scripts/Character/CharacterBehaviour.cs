@@ -18,6 +18,7 @@ namespace Character
         [SerializeField] private RectTransform gameoverPanel;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private List<Sprite> sprites;
+        [SerializeField] private new ParticleSystem particleSystem;
     
         private EffectStateManager _effectStateManager;
         private ClockManager _clockManager;
@@ -112,6 +113,7 @@ namespace Character
             {
                 transform.Translate(movement);
                 _audioManager.Play(AudioManager.Audio.DieMovement);
+                particleSystem.Play();
                 
                 _clockManager.Tick();
                 ChangeDieState(moveDirection);
